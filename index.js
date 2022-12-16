@@ -87,15 +87,28 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log(finances.length) // print out the total number of months, says 86 but I counted 85 is the first one counts at 0?
+console.log("Financial Analysis");
+console.log("----------------------------");
+console.log("Total Months: " + finances.length); // print out the total number of months
 
 
+// CORRECT CODE, HOW IT SHOULD DISPLAY:
+
+// Financial Analysis
+// ----------------------------
+// Total Months: 86
+// Total: $38382578
+// Average  Change: $-2315.12
+// Greatest Increase in Profits: Feb-2012 ($1926159)
+// Greatest Decrease in Profits: Sep-2013 ($-2196167)
+
+//------------------------------------------------------
 
 // TASK: 
 // The total number of months included in the dataset.
 // HOW TO:
 // figure out how many rows there are in the finances variable
-// the number of rows in that array = the length of that array ✅
+// the number of rows in that array = the length of that array 
 
 // TASK: 
 // The net total amount of Profit/Losses over the entire period.
