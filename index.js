@@ -105,6 +105,21 @@ for (var i = 0; i < finances.length; i++) { // for loop to calculate the net amo
 
 console.log("Total: $" + sum); // print out the net total amount of profit/losses from what we've calculated in the for loop above
 
+var difference = []; //  creating empty array with an opening square bracket and closing square bracket 
+for (var i = 0; i < finances.length - 1; i++) { 
+   difference.push(finances[i+1][1] - finances[i][1]); 
+}
+
+var totaldifference = 0; 
+for (var i = 0; i < difference.length; i++) { 
+    totaldifference += difference[i];
+ }
+
+var averagedifference = totaldifference / difference.length; // final calculation to work out the average by dividing them 
+
+console.log("Average Change: $" + averagedifference.toFixed(2)); // print out the average of the changes in profit/losses over the entire period in the console and added the fixed 2 to ensure it goes to 2 decimal places
+
+
 // end of my code
 
 //------------------------------------------------------
@@ -121,33 +136,6 @@ console.log("Total: $" + sum); // print out the net total amount of profit/losse
 
 //------------------------------------------------------
 
-// TASK: 
-// The average of the changes in Profit/Losses over the entire period.
-// HOW TO:
-// calculate each change by subtracting the previous month from this month
-// You will need to track what the total change in profits is from month to month and then find the average.
-// (Total/total number of changes) ===> total change/(months - 1)
-// maybe put all the changes into an array? using .push(...) ?
-// FURTHER HOW TO:
-// You will need to track what the total change in profits is from month to month and then find the average.
-// (Total/Number of months)
-// The bottom data point should read:
-// (Total/Number of records)
-// So in this case, we would have:
-// (Total/(Number of months - 1)
-// Because there will be one fewer change than there are data points.
-// For example, if the profit/loss were:
-// 110
-// 50
-// 125 
-// Then the month-over-month changes would be
-// -60 (from the first month to the second month... 50 - 110)
-// 75 (from the second month to the third month... 125 - 50) 
-// And the average of those would be: 
-// (-60 + 75)/2 or 7.5
-// Dividing by 2 because there are two changes (-60 and 75) even though there are three months of data.
-// So, generally, when calculating the average, you can divide the sum of the changes by (months - 1)
-
 
 // TASK:
 // The greatest increase in profits (date and amount) over the entire period.
@@ -161,33 +149,6 @@ console.log("Total: $" + sum); // print out the net total amount of profit/losse
 // HOW TO:
 // the requirement says 'the greatest decrease in losses (date and amount) over the entire period'
 // it should say 'the greatest decrease in profits (date and amount) over the entire period'
-
-// FROM STUDENT:
-// So I created a "for" loop to calculate the difference between the numbers. All I would say is make sure you start the loop at 1 otherwise an error is produced and it took me hours to get around 
-
-//------------------------------------------------------
-
-// An example of calculating the average change over the first 5 months:
-// var finances = [
-//    ['Jan-2010', 867884], // A
-//    ['Feb-2010', 984655], // B
-//    ['Mar-2010', 322013], // C
-//    ['Apr-2010', -69417], // D
-//    ['May-2010', 310503]  // E
-
-//    To calculate the average change, I need to
-//    1. calculate the change from month to month
-//    2.    .... for each month
-//        First change is B - A: 984655 - 867884 =  116771
-//        Next  change is C - B: 322013 - 984655 = -662642
-//        Next  change is D - C: -69417 - 322013 = -391430
-//        Next  change is E - D: 310503 - -69417 =  379920
-
-//    3. Add all those changes together
-//    116771 + -662642 + -391430 + 379920 = -557381
-
-//    4. Divide by the total number of changes I calculated
-//    -557381 / 4 = -139345.25
 
 //------------------------------------------------------
 
