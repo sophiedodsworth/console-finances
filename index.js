@@ -1,5 +1,3 @@
-// code provided
-
 var finances = [
     ['Jan-2010', 867884],
     ['Feb-2010', 984655],
@@ -89,8 +87,6 @@ var finances = [
     ['Feb-2017', 671099]
 ];
 
-// beginning of my code
-
 console.log("Financial Analysis"); // title of what we want printed in the console log
 
 console.log("----------------------------"); // seperator we want printed in the console log
@@ -106,58 +102,43 @@ for (var i = 0; i < finances.length; i++) { // for loop to calculate the net amo
 console.log("Total: $" + sum); // print out the net total amount of profit/losses from what we've calculated in the for loop above
 
 var difference = []; //  creating empty array with an opening square bracket and closing square bracket 
-for (var i = 0; i < finances.length - 1; i++) { 
-   difference.push(finances[i+1][1] - finances[i][1]); 
+for (var i = 0; i < finances.length - 1; i++) {
+    difference.push(finances[i + 1][1] - finances[i][1]);
 }
 
-var totaldifference = 0; 
-for (var i = 0; i < difference.length; i++) { 
+var totaldifference = 0;
+for (var i = 0; i < difference.length; i++) { // for is the keyword, var i = 0 is the initialization of the counter, i < difference.length defines the condition for the loop to run, i++ increases a value each time the loop is executed
     totaldifference += difference[i];
- }
+}
 
 var averagedifference = totaldifference / difference.length; // final calculation to work out the average by dividing them 
 
 console.log("Average Change: $" + averagedifference.toFixed(2)); // print out the average of the changes in profit/losses over the entire period in the console and added the fixed 2 to ensure it goes to 2 decimal places
 
+var increaseData = 0;
+var increaseProfit = 1;
 
-// end of my code
+for (var i = 0; i < difference.length; i++) { 
+    if (increaseProfit < difference[i]) { // the if conditional statement is to specify the block of code to be executed if the condition is true
+        increaseProfit = difference[i];
+        increaseData = i;
+    };
+}
 
-//------------------------------------------------------
+var highestMonth = finances[increaseData + 1][0];
 
-// CORRECT CODE, HOW IT SHOULD DISPLAY:
+console.log("Greatest Increase in Profits: " + highestMonth + " ($" + increaseProfit + ")");
 
-// Financial Analysis
-// ----------------------------
-// Total Months: 86
-// Total: $38382578
-// Average  Change: $-2315.12
-// Greatest Increase in Profits: Feb-2012 ($1926159)
-// Greatest Decrease in Profits: Sep-2013 ($-2196167)
+var decreaseData = 0;
+let decreaseProfit = 0;
 
-//------------------------------------------------------
+for (var i = 0; i < difference.length; i++) {
+    if (decreaseProfit > difference[i]) { // the if conditional statement is to specify the block of code to be executed if the condition is true
+        decreaseProfit = difference[i];
+        decreaseData = i;
+    };
+}
 
+var lowestMonth = finances[decreaseData + 1][0];
 
-// TASK:
-// The greatest increase in profits (date and amount) over the entire period.
-// HOW TO:
-// start with 0
-//   check the last increase. If it's bigger than 0, keep track of the new biggest one.
-//   in a loop
-
-// TASK:
-// The greatest decrease in losses (date and amount) over the entire period.
-// HOW TO:
-// the requirement says 'the greatest decrease in losses (date and amount) over the entire period'
-// it should say 'the greatest decrease in profits (date and amount) over the entire period'
-
-//------------------------------------------------------
-
-// How do I reference a value in a TWO-DIMENSIONAL array?
-// A two-dimensional array is an array that contains arrays. Like this:
-// var myArray = [ [ "Dan", 10 ], [ "Tucker", 42 ], [ "Hunter", 666 ], [ "Andrew", 99 ] ];
-// If I use bracket notation, I can grab an individual element. Like this:
-// myArray[2] is [ "Hunter", 666 ]
-// If I want to just get Hunter's name, I can get it like this:
-// myArray[2][0]
-// OR I could do this: var anotherArray = myArray[2];
-// var primeroElemento = myFavorite[0];
+console.log("Greatest Decrease in Profits: " + lowestMonth + " ($" + decreaseProfit + ")");
